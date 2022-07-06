@@ -35,8 +35,11 @@ The only requirements are that you use Java 8 (or above) with the latest renditi
 ==Answer: ==
 
 package command: mvn clean package
+
 run command: java -jar fizzbuzz-0.0.1-SNAPSHOT.jar
+
 test by browser: http://localhost:8080/fizzbuzz/next
+
 test by postman: [import this file to postman](./test.postman.collection)
 
 Please note that using 3rd party tooling for code generation that is coupled to a particular IDE or requires plugin installation against the IDE is somewhat frowned upon. The solution should be completely de-coupled and able to be imported directly into any modern Java IDE. It is also important that one can simply package this up to a single FAT jar to be executed from the command line.
