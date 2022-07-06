@@ -22,6 +22,8 @@ As we live in a world full of fizziness and buzziness, we invite you to implemen
 10. For super extra extra merit, wrap the whole thing with some form of integration test to assert that all the high-level REST calls are returning the correct values.
     a. Note: You need go no further than asserting against a single “Fizz”, a single “Buzz” and a single “FizzBuzz”.
     Answer: [ControllerIntegrationTest](./src/test/java/com/rbc/interview/fizzbuzz/controller/ControllerIntegrationTest.java)
+    
+
 The only requirements are that you use Java 8 (or above) with the latest rendition of Spring Boot. Any lower-level implementation decisions are your own.
 
 Please note that using 3rd party tooling for code generation that is coupled to a particular IDE or requires plugin installation against the IDE is somewhat frowned upon. The solution should be completely de-coupled and able to be imported directly into any modern Java IDE. It is also important that one can simply package this up to a single FAT jar to be executed from the command line.
