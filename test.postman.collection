@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "2d934c3e-df64-446e-beb1-d919a32a7cd4",
+		"name": "rbc-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "fizzbuzz",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/fizzbuzz/next",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fizzbuzz",
+						"next"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
