@@ -36,6 +36,8 @@ The only requirements are that you use Java 8 (or above) with the latest renditi
 
 package command: mvn clean package
 
+test command: mvn clean test
+
 run command: java -jar fizzbuzz-0.0.1-SNAPSHOT.jar
 
 test by browser: http://localhost:8080/fizzbuzz/next
