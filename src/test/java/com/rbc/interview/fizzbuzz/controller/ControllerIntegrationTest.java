@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
 
 import static org.hamcrest.CoreMatchers.is;
@@ -40,21 +41,24 @@ public class ControllerIntegrationTest {
         MockHttpSession session = new MockHttpSession();
         session.setAttribute("fakeSession","");
         String sessionId = session.getId();
-        mvc.perform(
-                get("/fizzbuzz/next").session(session).contentType(MediaType.APPLICATION_JSON).content(JsonUtils.toJson(result))
-        ).andExpect(jsonPath("$.nextValue",is("101")));
+        for(int i=1 ; i<11 ; i++) {
+            ResultActions resultActions = mvc.perform(
+                    get("/fizzbuzz/next").session(session).contentType(MediaType.APPLICATION_JSON).content(JsonUtils.toJson(result))
+            );
+            if( i == 1 ) {
+                resultActions.andExpect(jsonPath("$.nextValue",is("101")));
+            } else if ( i == 2 ) {
+                resultActions.andExpect(jsonPath("$.nextValue",is("Fizz")));
+            } else if( i == 3 ) {
+                resultActions.andExpect(jsonPath("$.nextValue",is("103"))).andExpect(jsonPath("$.sessionId", is(sessionId)));
+            } else if ( i == 5 ) {
+                resultActions.andExpect(jsonPath("$.nextValue",is("FizzBuzz"))).andExpect(jsonPath("$.sessionId", is(sessionId)));
+            } else if ( i==10 ) {
+                resultActions.andExpect(jsonPath("$.nextValue",is("Buzz"))).andExpect(jsonPath("$.sessionId", is(sessionId)));
+            }
+        }
 
-        mvc.perform(
-                get("/fizzbuzz/next").session(session).contentType(MediaType.APPLICATION_JSON)
-                        .content(JsonUtils.toJson(result))
 
-        ).andExpect(jsonPath("$.nextValue",is("Fizz")));
-
-        mvc.perform(
-                get("/fizzbuzz/next").session(session).contentType(MediaType.APPLICATION_JSON)
-                        .content(JsonUtils.toJson(result))
-
-        ).andExpect(jsonPath("$.nextValue",is("103"))).andExpect(jsonPath("$.sessionId", is(sessionId)));
     }
 
     /**

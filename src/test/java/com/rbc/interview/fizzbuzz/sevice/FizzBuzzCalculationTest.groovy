@@ -6,7 +6,7 @@ import spock.lang.Specification
 class FizzBuzzCalculationTest extends Specification{
 
 
-    def 'calculateFizzBuzz positive test' () {
+    def 'calculateFizzBuzz test' () {
         given:
         def fizzBuzzCal = new FizzBuzzCalculation()
         when:
@@ -19,13 +19,18 @@ class FizzBuzzCalculationTest extends Specification{
         assert r4.equals("1")
     }
 
-    def 'calculateFizzBuzz negative test' () {
+
+
+    def 'findNext  test' () {
         given:
         def fizzBuzzCal = new FizzBuzzCalculation()
+        def session = "1"
         when:
-        def r1 = fizzBuzzCal.calculateFizzBuzz(3)
+        def r1 = fizzBuzzCal.findNext(session)
+        def r2 = fizzBuzzCal.findNext(session)
         then:
-        assert r1.equals("Fizz") && r2.equals("Buzz") && r3.equals("FizzBuzz")
-        assert r4.equals("1")
+        assert r1.equals("101")
+        assert r2.equals("Fizz")
+
     }
 }
