@@ -18,7 +18,7 @@ public class FizzbuzzController {
     private FizzBuzzCalculation fizzBuzzCalculation;
 
     @RequestMapping(value = "/fizzbuzz/next", method= RequestMethod.GET)
-    public FizzBuzzReps next(HttpSession session) {
+    public FizzBuzzReps next(HttpSession session) throws Exception {
         FizzBuzzReps fizzBuzzReps = new FizzBuzzReps();
         String nextValue = fizzBuzzCalculation.findNext(session.getId());
         fizzBuzzReps.setNextValue(nextValue);

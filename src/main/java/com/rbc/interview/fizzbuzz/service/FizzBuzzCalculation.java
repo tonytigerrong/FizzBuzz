@@ -17,12 +17,20 @@ public class FizzBuzzCalculation {
     public void printDefaultHundredSeeds(){
         IntStream hundredSeeds = IntStream.range(1, 101);
         hundredSeeds.forEach( i -> {
-            calculateFizzBuzz(i);
+            try {
+                calculateFizzBuzz(i);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
 
-    public String calculateFizzBuzz(Integer seed) {
+    public String calculateFizzBuzz(Integer seed) throws Exception {
         String result = "";
+        // here is just custom create an exception to show the exception handler works
+        if( seed == 111 ) {
+            throw new Exception();
+        }
         if( seed % 3 == 0 && seed % 5 == 0 ) {
             result = "FizzBuzz";
         } else if( seed % 3 == 0 ) {
@@ -43,7 +51,7 @@ public class FizzBuzzCalculation {
      * 3. if not find, print 1-100 result, then calculate 101
      * 4. put sessionId, value
      */
-    public String findNext(String sessionId) {
+    public String findNext(String sessionId) throws Exception {
         Integer val = (Integer) CalculateSession.sessions.get(sessionId);
         if(val != null) {
             CalculateSession.sessions.put(sessionId, val+1);
